@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Литературный портал</title>
+<meta name="description" content="3D Литературный портал: от книги к жизни. Сказочный остров «Адал азамат»: 6 регионов, 36 русских и казахских книг, 3D-миры, музей, буктрейлеры, письма героям, задания на чтение, письмо и говорение, озвучка на русском и казахском. Гиды — снежный барс и беркут.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1a3a'/%3E%3Cpath d='M12 20c8-4 14-3 20 2 6-5 12-6 20-2v26c-8-4-14-3-20 2-6-5-12-6-20-2z' fill='%23f4d58d'/%3E%3Cpath d='M32 22v26' stroke='%230b1a3a' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== Language splash ===== -->
+<div id="splash" class="splash">
+  <div class="splash-inner">
+    <div class="splash-guides"><div class="sg" id="sgLeopard"></div><div class="splash-book" aria-hidden="true"><span>📖</span></div><div class="sg" id="sgEagle"></div></div>
+    <p class="splash-ai">«АДАЛ АЗАМАТ»</p>
+    <h1 class="splash-title">3D Литературный портал</h1>
+    <p class="splash-sub">От книги к жизни<br><span>3D Әдеби портал · Кітаптан өмірге</span></p>
+    <p class="splash-q">Выберите язык · Тілді таңдаңыз</p>
+    <div class="splash-btns">
+      <button class="btn btn-gold" data-pick="ru">Русский</button>
+      <button class="btn btn-gold" data-pick="kk">Қазақша</button>
+    </div>
+    <p class="splash-note">🎧 Включите звук · Дыбысты қосыңыз</p>
+  </div>
+</div>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar" id="topbar">
+  <a href="#hero" class="brand"><span class="brand-mark" aria-hidden="true">📖</span><span class="brand-text" data-i="brand"></span></a>
+  <nav class="nav" id="nav">
+    <a href="#hero" data-i="navHome"></a>
+    <a href="#map" data-i="navMap"></a>
+    <a href="#tales" data-i="navTales"></a>
+    <a href="#time" data-i="navTime"></a>
+    <a href="#museum" data-i="navMuseum"></a>
+    <a href="#values" data-i="navValues"></a>
+    <a href="#games" data-i="navGames"></a>
+    <a href="#idea" data-i="navIdea"></a>
+    <a href="#author" data-i="navAuthor"></a>
+  </nav>
+  <div class="top-actions">
+    <span class="badges" title="🏅">🏅 <b id="badgeCount">0</b></span>
+    <button class="icon-btn" id="voiceBtn" title="Голос / Дауыс" aria-label="Голос">🔊</button>
+    <button class="icon-btn" id="musicBtn" title="Музыка" aria-label="Музыка">🎵</button>
+    <div class="lang-switch" role="group" aria-label="Язык"><button data-lang="ru">РУС</button><button data-lang="kk">ҚАЗ</button></div>
+    <button class="icon-btn burger" id="burger" aria-label="Меню">☰</button>
+  </div>
+</header>
+
+<main>
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+  <div class="hero-sun" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="eyebrow" data-i="heroEyebrow"></p>
+    <p class="hero-ai">«АДАЛ АЗАМАТ»</p>
+    <h1 class="hero-title" data-i="title"></h1>
+    <p class="hero-sub" data-i="heroSub"></p>
+    <p class="hero-lead" data-i="heroLead"></p>
+    <div class="hero-btns">
+      <a href="#map" class="btn btn-gold" id="ctaRide" data-i="ctaMap"></a>
+      <button class="btn btn-ghost" id="openMuseumHero" data-i="ctaMuseum"></button>
+    </div>
+    <div class="stats">
+      <div><b>6</b><span data-i="stat1"></span></div>
+      <div><b>36</b><span data-i="stat2"></span></div>
+      <div><b>250+</b><span data-i="stat3"></span></div>
+      <div><b>2</b><span data-i="stat4"></span></div>
+    </div>
+    <a class="hero-author" href="#author"><img src="assets/img/author.jpg" alt="" id="heroAuthorImg"><span><small data-i="auEyebrow"></small><b id="heroAuthorName"></b><em id="heroAuthorRole"></em></span></a>
+  </div>
+  <div class="hero-book" id="heroBookBox">
+    <canvas id="heroBook" aria-label="3D книга"></canvas>
+    <div class="ar-frame" aria-hidden="true"><i></i><i></i><i></i><i></i><span>AR · 3D КНИГА</span></div>
+    <p class="hero-book-hint">Нажми на книгу · Кітапты бас</p>
+  </div>
+</section>
+
+<!-- ===== 3D map ===== -->
+<section class="map-full" id="map">
+  <div class="map-stage" id="mapStage">
+    <canvas id="mapCanvas" tabindex="0"></canvas>
+    <div class="map-labels" id="mapLabels"></div>
+    <div class="map-title">
+      <p class="eyebrow" data-i="mapEyebrow"></p>
+      <h2 data-i="mapTitle"></h2>
+      <p class="map-lead" data-i="mapLead"></p>
+    </div>
+    <div class="map-hud" id="mapHud">
+      <button class="chip on" data-mode="view" data-i="modeView"></button>
+      <button class="chip" data-mode="ride" data-i="modeRide"></button>
+      <button class="chip" data-mode="fly" data-i="modeFly"></button>
+    </div>
+    <div class="region-bar" id="regionBar"></div>
+    <p class="map-help" id="mapHelp"></p>
+
+    <div class="guide" id="guideBox">
+      <div class="guide-ava" id="guideIco"></div>
+      <div class="guide-txt"><b id="guideName">Ақбарыс</b> <small data-i="guideRole"></small><p id="guideBubble"></p><div class="guide-lang" id="guideLang" hidden><button class="btn btn-small btn-gold" data-glang="ru">🇷🇺 Русский</button><button class="btn btn-small btn-gold" data-glang="kk">🇰🇿 Қазақша</button></div></div>
+    </div>
+
+    <button class="near-prompt" id="nearPrompt" hidden><span>✨</span> <b id="nearTitle"></b><small data-i="enterPortal"></small></button>
+    <div class="quest-bar" id="questBar" hidden><span id="questQ"></span><button class="chip" id="questStop">✕</button></div>
+
+    <button class="side-toggle" id="sideToggle">☰ <span data-i="mapList"></span></button>
+    <aside class="map-side" id="mapSide"><ol class="tale-list" id="taleList"></ol></aside>
+
+    <div class="pad" aria-hidden="true">
+      <button data-k="up">▲</button><button data-k="left">◀</button><button data-k="down">▼</button><button data-k="right">▶</button>
+      <button data-k="rise" class="pr">⤒</button><button data-k="sink" class="ps">⤓</button><button data-k="fast" class="pf">⚡</button><button data-act class="pe">E</button>
+    </div>
+    <div class="map-loading" id="mapLoading" data-i="loading3d"></div>
+  </div>
+</section>
+
+<!-- ===== Books ===== -->
+<section class="section" id="tales">
+  <div class="section-head"><p class="eyebrow" data-i="talesEyebrow"></p><h2 data-i="talesTitle"></h2><p class="section-lead" data-i="talesLead"></p></div>
+  <div class="filters" id="taleFilters"></div>
+  <div class="tcards" id="taleCards"></div>
+</section>
+
+<!-- ===== Time machine ===== -->
+<section class="section time-sec" id="time">
+  <div class="section-head"><p class="eyebrow" data-i="timeEyebrow"></p><h2 data-i="timeTitle"></h2><p class="section-lead" data-i="timeLead"></p></div>
+  <div class="tm-dial"><span class="tm-ico">⏳</span><b id="tmYear">2026</b><small id="tmEra"></small></div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- ===== Museum ===== -->
+<section class="section museum-sec" id="museum">
+  <div class="section-head"><p class="eyebrow" data-i="muEyebrow"></p><h2 data-i="muTitle"></h2><p class="section-lead" data-i="muLead"></p><button class="btn btn-ghost" id="openGallery">🖼 Галерея · Галерея</button></div>
+  <div class="museum-grid" id="museumGrid"></div>
+  <details class="credits"><summary data-i="credTitle"></summary><ul id="credList"></ul></details>
+</section>
+
+<!-- ===== Values ===== -->
+<section class="section values-sec" id="values">
+  <div class="section-head"><p class="eyebrow" data-i="vaEyebrow"></p><h2 data-i="vaTitle"></h2><p class="section-lead" data-i="vaLead"></p></div>
+  <div class="values" id="valuesBox"></div>
+</section>
+
+<!-- ===== Games ===== -->
+<section class="section" id="games">
+  <div class="section-head"><p class="eyebrow" data-i="gmEyebrow"></p><h2 data-i="gmTitle"></h2><p class="section-lead" data-i="gmLead"></p></div>
+  <div class="games">
+    <article class="game-card"><div class="game-ico">🐆</div><h3 data-i="g1t"></h3><p data-i="g1d"></p><p class="g3">1 · 2 · 3</p><button class="btn btn-gold" id="gPath" data-i="play"></button></article>
+    <article class="game-card"><div class="game-ico">📚</div><h3 data-i="g2t"></h3><p data-i="g2d"></p><p class="g3">1 · 2 · 3</p><button class="btn btn-gold" id="gMatch" data-i="play"></button></article>
+    <article class="game-card"><div class="game-ico">⛺</div><h3 data-i="g3t"></h3><p data-i="g3d"></p><p class="g3">1 · 2 · 3</p><button class="btn btn-gold" id="gYurt" data-i="play"></button></article>
+    <article class="game-card"><div class="game-ico">🗺️</div><h3 data-i="g4t"></h3><p data-i="g4d"></p><p class="g3">1 · 2 · 3</p><button class="btn btn-gold" id="gQuest" data-i="play"></button></article>
+  </div>
+</section>
+
+<!-- ===== Pedagogical idea ===== -->
+<section class="section idea-sec" id="idea">
+  <div class="section-head"><p class="eyebrow" data-i="idEyebrow"></p><h2 data-i="idTitle"></h2></div>
+  <div id="ideaBox"></div>
+</section>
+
+<!-- ===== Author ===== -->
+<section class="section" id="author">
+  <div class="author-card">
+    <div class="author-photo"><img src="assets/img/author.jpg" alt="Тасбалта Аяулым Шәріпбайқызы" id="authorImg"></div>
+    <div class="author-info">
+      <p class="eyebrow" data-i="auEyebrow"></p>
+      <h2 id="authorName"></h2>
+      <p class="author-role" id="authorRole"></p>
+      <p class="author-school" id="authorSchool"></p>
+      <p class="author-school" id="authorExp"></p>
+      <p id="authorText"></p>
+      <div class="author-tags" id="authorTags"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p class="f-orn">❖ ❖ ❖</p>
+  <p data-i="footer"></p>
+  <p class="small" data-i="credits"></p>
+</footer>
+
+<!-- ===== Portal transition ===== -->
+<div class="travel" id="travel" hidden>
+  <div class="travel-rings"><i></i><i></i><i></i></div>
+  <div class="travel-inner"><img id="travelImg" alt=""><p class="travel-to">⏳ МАШИНА ВРЕМЕНИ · УАҚЫТ МАШИНАСЫ</p><div class="travel-year" id="travelYear">2026</div><p class="travel-era" id="travelEra"></p><h2 id="travelTitle"></h2><p id="travelKk"></p></div>
+</div>
+
+<!-- ===== Portal world ===== -->
+<div class="world" id="world" hidden>
+  <canvas id="worldCanvas"></canvas>
+  <div class="world-labels" id="worldLabels"></div>
+  <div class="w-top">
+    <button class="btn btn-small btn-ghost" id="wBack" data-i="backMap"></button>
+    <div class="w-title"><h2 id="wTitle"></h2><p><span id="wKk"></span> · <span id="wPlace"></span></p><p class="w-era" id="wEra"></p></div>
+    <button class="btn btn-small btn-ghost vtoggle" id="wVoice"><span class="vi">🔊</span> <span class="vl"></span></button>
+    <button class="btn btn-small btn-gold" id="wBook">📖 <span>Книга · Кітап</span></button>
+    <div class="w-modes" id="wModes"><button class="chip on" data-wm="ride" title="Ақбарыс">🐆</button><button class="chip" data-wm="fly" title="Қыран">🦅</button></div>
+  </div>
+  <p class="w-help" data-i="worldHelp"></p>
+  <button class="near-prompt w-near" id="wNear" hidden>✨ <b id="wNearName"></b> <small>E</small></button>
+  <div class="bk" id="bk" hidden>
+    <div class="bk-stage">
+      <div class="bk-book closed">
+        <div class="bk-base"></div>
+        <div class="bk-page bk-left" id="bkL"><div class="pg-in"></div><span class="pg-num"></span></div>
+        <div class="bk-page bk-right" id="bkR"><div class="pg-in"></div><span class="pg-num"></span></div>
+        <div class="bk-page bk-left bk-mask" hidden><div class="pg-in" id="bkMaskL"></div></div>
+        <div class="bk-page bk-right bk-mask" hidden><div class="pg-in" id="bkMaskR"></div></div>
+        <div class="bk-leaf" hidden><div class="bk-page lf-front"><div class="pg-in"></div></div><div class="bk-page lf-back"><div class="pg-in"></div></div></div>
+        <div class="bk-cover"><div class="cv-front"></div><div class="bk-page cv-back"><div class="pg-in"></div></div></div>
+        <nav class="bk-tabs" id="pTabs">
+          <button data-tab="story">📖 <span data-i="tStory"></span></button>
+          <button data-tab="heroes">🎭 <span data-i="tHeroes"></span></button>
+          <button data-tab="museum">🏛 <span data-i="tMuseum"></span></button>
+          <button data-tab="trailer">🎬 <span data-i="tTrailer"></span></button>
+          <button data-tab="letters">✉ <span data-i="tLetters"></span></button>
+          <button data-tab="tasks">🧩 <span data-i="tTasks"></span></button>
+          <button data-tab="guide">🐆 <span data-i="tGuide"></span></button>
+        </nav>
+      </div>
+    </div>
+    <div class="bk-bar"><button class="btn btn-small btn-ghost" id="bkPrev">◀</button><span id="bkCount"></span><button class="btn btn-small btn-gold" id="bkNext">▶</button><button class="btn btn-small btn-ghost vtoggle" id="bkVoice"><span class="vi">🔊</span> <span class="vl"></span></button><button class="btn btn-small btn-ghost" id="bkClose">✕ <span>Закрыть · Жабу</span></button></div>
+  </div>
+  <div class="pad" aria-hidden="true">
+    <button data-k="up">▲</button><button data-k="left">◀</button><button data-k="down">▼</button><button data-k="right">▶</button>
+    <button data-k="rise" class="pr">⤒</button><button data-k="sink" class="ps">⤓</button><button data-k="fast" class="pf">⚡</button><button data-act class="pe">E</button>
+  </div>
+</div>
+
+<!-- ===== Game modal ===== -->
+<div class="modal" id="gameModal" hidden>
+  <div class="modal-box">
+    <header class="modal-head"><h2 id="gmTitleH"></h2><button class="icon-btn" data-close aria-label="Закрыть">✕</button></header>
+    <div class="modal-body" id="gameBody"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden><img id="lbImg" alt=""><p id="lbCap"></p></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="js/models.js"></script>
+<script src="js/data.js"></script>
+<script src="js/books-1.js"></script>
+<script src="js/books-2.js"></script>
+<script src="js/books-3.js"></script>
+<script src="js/books-4.js"></script>
+<script src="js/books-5.js"></script>
+<script src="js/books-6.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/imgdata.js"></script>
+<script src="js/credits.js"></script>
+<script src="js/extra.js"></script>
+<script src="js/audio-map.js"></script>
+<script src="js/guides.js"></script>
+<script src="js/avatar.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/island.js"></script>
+<script src="js/map3d.js"></script>
+<script src="js/portal.js"></script>
+<script src="js/trailer.js"></script>
+<script src="js/book.js"></script>
+<script src="js/herobook.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
